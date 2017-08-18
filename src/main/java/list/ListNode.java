@@ -1,6 +1,6 @@
 package list;
 
-public class ListNode<T> {
+class ListNode<T> {
     private T value;
     private ListNode nextNode;
     private ListNode previousNode;
@@ -27,10 +27,6 @@ public class ListNode<T> {
 
     ListNode getPreviousNode() {
         return previousNode;
-    }
-
-    public void setValue(T value) {
-        this.value = value;
     }
 
     void setNextNode(ListNode nextNode) {

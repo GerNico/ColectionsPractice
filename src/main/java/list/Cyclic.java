@@ -7,5 +7,5 @@ public interface Cyclic<T> {
 
     void setStartOnIndex(int n);
 
-    public void remove(int n);
+    void remove(int n);
 }
