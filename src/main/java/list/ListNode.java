@@ -11,10 +11,10 @@ class ListNode<T> {
         this.previousNode = previousNode;
     }
 
-    ListNode(T value){
-        this.nextNode=null;
-        this.previousNode=null;
-        this.value=value;
+    ListNode(T value) {
+        this.nextNode = null;
+        this.previousNode = null;
+        this.value = value;
     }
 
     T getValue() {

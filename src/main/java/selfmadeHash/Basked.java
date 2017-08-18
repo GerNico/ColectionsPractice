@@ -15,29 +15,29 @@ public class Basked<K, V> {
         return null;
     }
 
-    public boolean insert(K key, V value){
-       TableEntry<K,V> entry=new TableEntry<>(key,value);
-       for(TableEntry<K, V> some:listOfEntry){
-           if(some.getKey().equals(key))return false;
-       }
-       if (key!=null){
-           listOfEntry.add(entry);
-           return true;
-       }
-       return false;
+    public boolean insert(K key, V value) {
+        TableEntry<K, V> entry = new TableEntry<>(key, value);
+        for (TableEntry<K, V> some : listOfEntry) {
+            if (some.getKey().equals(key)) return false;
+        }
+        if (key != null) {
+            listOfEntry.add(entry);
+            return true;
+        }
+        return false;
     }
 
-    public boolean remove(K key){
-        Iterator<TableEntry<K, V>> iterator=listOfEntry.iterator();
-        TableEntry<K,V> current;
-        while (iterator.hasNext()){
-            current= iterator.next();
-            if (current.getKey().equals(key))iterator.remove();
+    public boolean remove(K key) {
+        Iterator<TableEntry<K, V>> iterator = listOfEntry.iterator();
+        TableEntry<K, V> current;
+        while (iterator.hasNext()) {
+            current = iterator.next();
+            if (current.getKey().equals(key)) iterator.remove();
         }
         return true;
     }
 
-    public LinkedList<TableEntry<K, V>> getAll(){
+    public LinkedList<TableEntry<K, V>> getAll() {
         return listOfEntry;
     }
 }

@@ -1,6 +1,6 @@
 package selfmadeHash;
 
-public class TableEntry<K,V> {
+public class TableEntry<K, V> {
     private K key;
     private V value;
 

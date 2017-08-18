@@ -12,8 +12,9 @@ public class MyHashTable<K, V> implements SelfmadeHashContract<K, V> {
     public MyHashTable() {
         buildMe();
     }
+
     public MyHashTable(int capacity) {
-        this.capacity=capacity;
+        this.capacity = capacity;
         buildMe();
     }
 
@@ -26,17 +27,17 @@ public class MyHashTable<K, V> implements SelfmadeHashContract<K, V> {
     @Override
     public boolean put(K key, V value) {
         recordsN++;
-        if (recordsN<capacity*loadFactor){
-        int baskedNumber = key.hashCode() % capacity;
-        if (baskedNumber < 0) baskedNumber = capacity + baskedNumber;
-        return selfMadeTable.get(baskedNumber).insert(key, value);}
-        else{
-            MyHashTable<K,V> newHashTable=new MyHashTable<>(2*capacity);
-            for (TableEntry<K, V> entery :this.getAllEntry()) {
-                newHashTable.put(entery.getKey(),entery.getValue());
+        if (recordsN < capacity * loadFactor) {
+            int baskedNumber = key.hashCode() % capacity;
+            if (baskedNumber < 0) baskedNumber = capacity + baskedNumber;
+            return selfMadeTable.get(baskedNumber).insert(key, value);
+        } else {
+            MyHashTable<K, V> newHashTable = new MyHashTable<>(2 * capacity);
+            for (TableEntry<K, V> entery : this.getAllEntry()) {
+                newHashTable.put(entery.getKey(), entery.getValue());
             }
-            this.selfMadeTable=newHashTable.selfMadeTable;
-            this.capacity=newHashTable.capacity;
+            this.selfMadeTable = newHashTable.selfMadeTable;
+            this.capacity = newHashTable.capacity;
             return false;
 
         }
@@ -56,9 +57,9 @@ public class MyHashTable<K, V> implements SelfmadeHashContract<K, V> {
         return selfMadeTable.get(baskedNumber).remove(key);
     }
 
-    LinkedList<TableEntry<K,V>> getAllEntry(){
-        LinkedList<TableEntry<K,V>> listOfAll=new LinkedList<>();
-        for (Basked<K,V> basked: this.selfMadeTable) {
+    LinkedList<TableEntry<K, V>> getAllEntry() {
+        LinkedList<TableEntry<K, V>> listOfAll = new LinkedList<>();
+        for (Basked<K, V> basked : this.selfMadeTable) {
             listOfAll.addAll(basked.getAll());
         }
         return listOfAll;
@@ -66,19 +67,19 @@ public class MyHashTable<K, V> implements SelfmadeHashContract<K, V> {
 
     public boolean wherePut(K key, V value) {
         recordsN++;
-        if (recordsN<capacity*loadFactor){
+        if (recordsN < capacity * loadFactor) {
             int baskedNumber = key.hashCode() % capacity;
             if (baskedNumber < 0) baskedNumber = capacity + baskedNumber;
-            System.out.println(key+"\t\t put to \t"+baskedNumber+"\t box, hash \t"+key.hashCode());
-            return selfMadeTable.get(baskedNumber).insert(key, value);}
-        else{
+            System.out.println(key + "\t\t put to \t" + baskedNumber + "\t box, hash \t" + key.hashCode());
+            return selfMadeTable.get(baskedNumber).insert(key, value);
+        } else {
             System.out.println("---------   rebuild    -----------");
-            MyHashTable<K,V> newHashTable=new MyHashTable<>(2*capacity);
-            for (TableEntry<K, V> entery :this.getAllEntry()) {
-                newHashTable.wherePut(entery.getKey(),entery.getValue());
+            MyHashTable<K, V> newHashTable = new MyHashTable<>(2 * capacity);
+            for (TableEntry<K, V> entery : this.getAllEntry()) {
+                newHashTable.wherePut(entery.getKey(), entery.getValue());
             }
-            this.selfMadeTable=newHashTable.selfMadeTable;
-            this.capacity=newHashTable.capacity;
+            this.selfMadeTable = newHashTable.selfMadeTable;
+            this.capacity = newHashTable.capacity;
             return false;
 
         }

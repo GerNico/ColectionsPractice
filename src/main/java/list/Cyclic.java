@@ -1,6 +1,7 @@
 package list;
 
 public interface Cyclic<T> {
+
     void addLast(T value);
 
     T get(int index);
