@@ -44,7 +44,7 @@ class TreeNode<K extends Comparable<K>, V> {
         return value;
     }
 
-    public void setKey(K key) {
+    void setKey(K key) {
         this.key = key;
     }
 

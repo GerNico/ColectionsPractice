@@ -1,8 +1,9 @@
 package treeAVL;
 
-public class TreeAVL<K extends Comparable<K>, V> {
+public class TreeAVL<K extends Comparable<K>, V> implements UsefulTree<K, V> {
     private TreeNode<K, V> root;
 
+    @Override
     public boolean insert(K key, V value) {
         if (root == null)
             root = new TreeNode<>(key, value, null);
@@ -32,7 +33,7 @@ public class TreeAVL<K extends Comparable<K>, V> {
         return true;
     }
 
-
+    @Override
     public V get(K key) {
         TreeNode<K, V> current = this.root;
         while (current != null) {
@@ -46,7 +47,7 @@ public class TreeAVL<K extends Comparable<K>, V> {
         return null;
     }
 
-    TreeNode<K, V> minimumElement(TreeNode<K, V> root) {
+    private TreeNode<K, V> minimumElement(TreeNode<K, V> root) {
         if (root.left == null)
             return root;
         else {
@@ -54,21 +55,7 @@ public class TreeAVL<K extends Comparable<K>, V> {
         }
     }
 
-    private boolean remove(TreeNode<K, V> root, TreeNode<K, V> node) {
-        while (root != null) {
-            if (root.getKey().equals(node.getKey())) {
-                root = null;
-                return true;
-            }
-            if (root.getKey().compareTo(node.getKey()) > 0) {
-                root = root.left;
-            } else {
-                root = root.right;
-            }
-        }
-        return false;
-    }
-
+    @Override
     public boolean remove(K key) {
         TreeNode<K, V> current = this.root;
         while (current != null) {
